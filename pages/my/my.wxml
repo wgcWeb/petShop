@@ -1,0 +1,48 @@
+<!--pages/my/my.wxml-->
+<view class="page-box">
+  <button class="btn-login" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">
+    <!-- 未登录状态 -->
+    <view class="login-info" wx-if="{{!user.nickName}}">
+      <image src="/images/default-header.png"></image>
+      <view class="login">
+        <view class="top">点击登录</view>
+      </view>
+    </view>
+  </button>
+
+  <!-- 已登录状态 -->
+  <view class="login-info" wx-if="{{user.nickName}}">
+    <image src="{{user.avatarUrl}}"></image>
+    <view class="login">
+      <view class="top">{{user.nickName}}</view>
+      <view class="desc">铂金用户</view>
+    </view>
+  </view>
+  <!-- 会员中心跳转 -->
+  <view class="member-box">
+    <view class="item" bindtap="jumpOrder">
+      我的订单
+      <text class="iconfont iconarrowdropdown-copy-copy fn-right"></text>
+    </view>
+    <view class="item">
+      我的优惠券
+      <text class="iconfont iconarrowdropdown-copy-copy fn-right"></text>
+    </view>
+    <view class="item">
+      我的积分
+      <text class="iconfont iconarrowdropdown-copy-copy fn-right"></text>
+    </view>
+    <view class="item">
+      我的宠物
+      <text class="iconfont iconarrowdropdown-copy-copy fn-right"></text>
+    </view>
+    <view class="item">
+      个人信息
+      <text class="iconfont iconarrowdropdown-copy-copy fn-right"></text>
+    </view>
+    <view class="item">
+      账号设置
+      <text class="iconfont iconarrowdropdown-copy-copy fn-right"></text>
+    </view>
+  </view>
+</view>

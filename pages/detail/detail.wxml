@@ -1,0 +1,56 @@
+<!--pages/detail.wxml-->
+<view class="page-box">
+  <!-- 幻灯片开始 -->
+  <view class="swiper-box">
+    <swiper bindchange="swiperChange" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+      <block wx:for="{{detailInfo.SwiperImgList}}" wx:key="*this">
+        <swiper-item>
+          <image src="{{item}}" bindtap="showImage"></image>
+        </swiper-item>
+      </block>
+    </swiper>
+    <view class="tips">
+      <!-- view 块级元素 -->
+      <!-- text 行内元素 -->
+      <text>{{current+1}}/3</text>
+    </view>
+  </view>
+  <!-- 商品信息 -->
+  <view class="goods-info">
+    <view class="price yellow">￥{{detailInfo.SaleAmount}}</view>
+    <view class="share-box">
+      <view class="title">{{detailInfo.Title}}</view>
+      <button open-type="share" class="shareBtn">
+        <view class="iconfont icon-share"></view>
+      </button>
+    </view>
+  </view>
+  <!-- 地址 -->
+  <view class="address">
+    <view class="iconfont icon-map"></view>
+    <view>苏州市工业园区星湖街1号</view>
+  </view>
+  <!-- 商品详情 -->
+  <view class="detail-box">
+    <block wx:for="{{detailInfo.DetailImgList}}" wx:key="*this">
+      <image mode="widthFix" src="{{item}}"></image>
+    </block>
+  </view>
+  <!-- 底部导航 -->
+  <view class="bottom-nav">
+    <view class="small" bindtap="jumpToHome">
+      <view class="iconfont icon-home"></view>
+      <view>首页</view>
+    </view>
+    <view class="small" bindtap="onCall">
+      <view class="iconfont icon-wechat"></view>
+      <view>咨询</view>
+    </view>
+    <view class="small" bindtap="jumpToCart">
+      <view class="iconfont icon-cart"></view>
+      <view>购物车</view>
+    </view>
+    <view class="add-cart" bindtap="addToCart">加入购物车</view>
+    <view class="btn-buy" bindtap="btnBuy">立即购买</view>
+  </view>
+</view>

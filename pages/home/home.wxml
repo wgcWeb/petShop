@@ -1,0 +1,36 @@
+<!--pages/home/home.wxml-->
+<view class="page-box">
+  <!-- 轮播图 -->
+  <view class="swiper-box">
+    <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+      <block wx:for="{{background}}" wx:key="*this">
+        <swiper-item>
+          <image src="{{item}}" alt=""></image>
+          <!-- <view class="swiper-item {{item}}"></view> -->
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <!-- 导航栏 -->
+  <view class="nav-box">
+    <scroll-view scroll-x="{{true}}">
+      <view class="nav">
+        <view class="item {{index == currentIndex? 'yellow': ''}} " wx:for="{{goodsList}}" wx:key="index" data-index="{{ index }}" bindtap="go">{{item}}</view>
+      </view>
+    </scroll-view>
+  </view>
+  <!-- 商品列表 -->
+  <view class="goods-list">
+    <view class="item" wx:for="{{goodsData}}" wx:key="Id"  data-goodsid="{{item.GoodsNo}}" bindtap="jumpDetail">
+      <view class="pic">
+        <image src="{{item.GoodsImage}}"></image>
+      </view>
+      <view class="content">
+        <view class="title">{{item.Title}}</view>
+        <view class="desc">{{item.Brand}}</view>
+        <view class="price yellow">￥{{item.SaleAmount}}</view>
+      </view>
+    </view>
+    <view class="no-more" wx:if="{{isComplete}}">没有更多了~</view>
+  </view>
+</view>
